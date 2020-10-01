@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  relationship: MyString
+  name: MyString
+  email: MyString
+  contact: 1
+  bloodgroup: MyString
+  dob: 2020-10-01
+  weight: MyString
+  height: MyString
+
+two:
+  relationship: MyString
+  name: MyString
+  email: MyString
+  contact: 1
+  bloodgroup: MyString
+  dob: 2020-10-01
+  weight: MyString
+  height: MyString

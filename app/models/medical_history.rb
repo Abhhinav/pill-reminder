@@ -1,4 +1,4 @@
 class MedicalHistory < ApplicationRecord
   belongs_to :user
-  belongs_to :dependent, optional: true
+  belongs_to :dependant, optional: true
 end

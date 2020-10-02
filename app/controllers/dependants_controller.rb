@@ -1,11 +1,16 @@
 class DependantsController < ApplicationController
-  before_action :set_dependant, only: [:show, :update, :destroy]
+  before_action :set_dependant, only: [:show, :edit, :update, :destroy]
+  before_action :validate_user!, except: [:index, :new, :create, :edit, :update, :show]
 
   # GET /dependants
   def index
     @dependants = Dependant.all
 
     render json: @dependants
+  end
+
+  # GET /dependents/1/edit
+  def edit
   end
 
   # GET /dependants/1
@@ -46,6 +51,6 @@ class DependantsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def dependant_params
-      params.require(:dependant).permit(:relationship, :name, :email, :contact, :bloodgroup, :dob, :weight, :height)
+      params.require(:dependant).permit(:relationship, :name, :email, :contact, :bloodgroup, :dob, :weight, :height, :user_id)
     end
 end

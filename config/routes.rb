@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "medical_histories/:user_id/users", to: "medical_histories#get_for_self"
   get "medical_histories/:user_id/deps", to: "medical_histories#get_for_dependants"
 
-
+  get "dependants/:user_id/deps", to: "dependants#user_deps"
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new',  as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'

@@ -41,6 +41,9 @@ class MedicalHistoriesController < ApplicationController
   # DELETE /medical_histories/1
   def destroy
     @medical_history.destroy
+    respond_to do |format|
+    format.json {render json: {id: @medical_history.id}, status: :ok }
+    end
   end
 
   def get_for_self
@@ -49,6 +52,7 @@ class MedicalHistoriesController < ApplicationController
     # for today
     @medical_histories = MedicalHistory
           .where(user_id: user_id, dependant_id: nil)
+          .where("? BETWEEN startdate AND enddate", DateTime.now.to_date)
           .order(:startdate, :asc)
     
     render json: @medical_histories

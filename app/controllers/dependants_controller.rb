@@ -1,6 +1,6 @@
 class DependantsController < ApplicationController
   before_action :set_dependant, only: [:show, :edit, :update, :destroy]
-  before_action :validate_user!, except: [:index, :new, :create, :edit, :update, :show]
+  before_action :validate_user!, except: [:index, :new, :create, :edit, :update, :show, :user_deps]
 
   # GET /dependants
   def index
@@ -41,6 +41,17 @@ class DependantsController < ApplicationController
   # DELETE /dependants/1
   def destroy
     @dependant.destroy
+  end
+
+  #GET /dependants/:id/deps
+  def user_deps
+    user_id = params[:user_id]
+
+    @dependants = Dependant
+          .where(user_id: user_id)
+          .order(:startdate, :asc)
+    
+    render json: @dependants
   end
 
   private
